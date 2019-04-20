@@ -1,0 +1,24 @@
+{
+    "name": "djfm/php-debugger",
+    "authors": [
+        {
+            "name": "François-Marie de Jouvencel",
+            "email": "fm.de.jouvencel@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^8.1",
+        "hassankhan/config": "^2.0",
+        "monolog/monolog": "^1.24",
+        "kmelia/monolog-stdout-handler": "^1.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "autoload": {
+      "psr-4": {
+        "DJFM\\Xdebug\\": "src/"
+      }
+    }
+}
