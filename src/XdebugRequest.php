@@ -5,6 +5,12 @@ namespace DJFM\Xdebug;
 class XdebugRequest
 {
     /**
+     * What this does in human
+     * @var [type]
+     */
+    private $description;
+    
+    /**
      * What to do
      * @var string
      */
@@ -81,6 +87,29 @@ class XdebugRequest
     public function setExpression($expression)
     {
         $this->expression = $expression;
+ 
+        return $this;
+    }
+    
+    
+
+    /**
+     * Get the value of What this does in human terms
+     *
+     * @return [type]
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+ 
+    /**
+     * @param string $description
+     * @return self
+     */
+    public function setDescription(...$description)
+    {
+        $this->description = implode(' ', $description);
  
         return $this;
     }

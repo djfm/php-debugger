@@ -43,8 +43,13 @@ class XdebugCaller
 
         $commandStr = implode(' ', $command);
 
-        $this->logger->info("Sending to Xdebug:\n");
-        $this->logger->info('[c=yellow]' . $commandStr . '[/c]');
+        $this->logger->info('Sending to Xdebug:');
+        $this->logger->info(
+            '[c=blue]=>[/c] [c=yellow]'
+            . $commandStr
+            . '[/c]'
+        );
+        echo "\n";
 
         $bytesWritten = fwrite($this->socket, $commandStr . "\0");
         if ($bytesWritten === false

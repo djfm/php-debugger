@@ -10,7 +10,8 @@
         "phpunit/phpunit": "^8.1",
         "hassankhan/config": "^2.0",
         "monolog/monolog": "^1.24",
-        "kmelia/monolog-stdout-handler": "^1.2"
+        "kmelia/monolog-stdout-handler": "^1.2",
+        "shanethehat/pretty-xml": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",

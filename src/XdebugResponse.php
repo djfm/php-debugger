@@ -3,6 +3,8 @@
 namespace DJFM\Xdebug;
 
 use SimpleXMLElement;
+use DOMDocument;
+use PrettyXml\Formatter as XMLFormatter;
 
 class XdebugResponse
 {
@@ -124,5 +126,33 @@ class XdebugResponse
         $this->xml = $xml;
  
         return $this;
+    }
+    
+    /**
+     * Pretty print XML.
+     * Stolen from: https://solvit.io/8e2132e
+     * @param  SimpleXMLElement $elt
+     * @return string
+     */
+    private function prettyPrint($elt, $depth = 0)
+    {
+        $tagIndent = \str_repeat(" ", 2 * $depth);
+        $attrsIndent = \str_repeat(" ", 2 * ($depth + 1));
+        $nodeName = $elt->getName();
+        $result = "{$tagIndent}<$nodeName";
+        foreach ($elt->attributes() as $name => $value) {
+            $result .= "\n{$attrsIndent}$name=\"$value\"";
+        }
+        foreach ($elt->children() as $child) {
+            $pretty = $this->prettyPrint($child, $depth + 1);
+            $result .= "\n$pretty";
+        }
+        $result .= "\n{$tagIndent}>";
+        return $result;
+    }
+    
+    public function getPrettyPrintedXML()
+    {
+        return $this->prettyPrint($this->getXML());
     }
 }

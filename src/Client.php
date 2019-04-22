@@ -36,6 +36,10 @@ class Client
     {
         $addr = $this->config['server']['address'];
         $port = $this->config['server']['port'];
+        $this->logger->info(
+            "[c=green]Debugger ready and waiting "
+            ."for a connection on $addr:$port [/c]"
+        );
 
         $errno = 0;
         $errstr = '';
@@ -84,6 +88,8 @@ class Client
         $this->logger->info(
             '[c=green]We are now connected to Xdebug![/c]'
         );
+        echo "\n";
+
         fclose($server);
         stream_set_blocking(STDIN, 0);
         

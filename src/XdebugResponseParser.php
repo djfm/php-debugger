@@ -6,6 +6,8 @@ use SimpleXMLElement;
 
 class XdebugResponseParser
 {
+    private $response = '';
+    
     public function parse($origStr)
     {
         $response = new XdebugResponse;
@@ -30,6 +32,7 @@ class XdebugResponseParser
             );
         };
         
+        $this->response = $response;
         return $response;
     }
 }

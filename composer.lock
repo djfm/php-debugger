@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2850a82781047832370d872a9a0bf434",
+    "content-hash": "ebdeb72ae33d32437236a0c758868eb3",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1560,6 +1560,49 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "shanethehat/pretty-xml",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shanethehat/pretty-xml.git",
+                "reference": "2b063c6544c8dc9563c53cb72eb06d1d74c9e75f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shanethehat/pretty-xml/zipball/2b063c6544c8dc9563c53cb72eb06d1d74c9e75f",
+                "reference": "2b063c6544c8dc9563c53cb72eb06d1d74c9e75f",
+                "shasum": ""
+            },
+            "require-dev": {
+                "behat/behat": "~3.0",
+                "bossa/phpspec2-expect": "*",
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PrettyXml": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shane Auckland",
+                    "email": "shane.auckland@gmail.com",
+                    "homepage": "http://shaneauckland.co.uk"
+                }
+            ],
+            "description": "Library for pretty-printing XML",
+            "keywords": [
+                "pretty",
+                "xml"
+            ],
+            "time": "2015-08-10T14:22:54+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
