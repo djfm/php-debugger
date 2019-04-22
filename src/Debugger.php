@@ -6,11 +6,11 @@ use Noodlehaus\Config;
 use Monolog\Logger;
 use Monolog\Handler\StdoutHandler;
 
-use DJFM\Xdebug\XdebugResponse;
+use DJFM\Xdebug\Response;
 
 use Exception;
 
-class Client
+class Debugger
 {
     private $config;
     private $socket;
@@ -54,17 +54,17 @@ class Client
 
         $initPacket = fread($this->socket, 4096);
         
-        $XdebugResponse = (new XdebugResponseParser)
+        $Response = (new ResponseParser)
                                 ->parse($initPacket);
         $this->logger->info(
             '[c=green]XDebug said something in XML.[/c]'
         );
         echo "\n";
 
-        $this->logger->info($XdebugResponse->getText());
+        $this->logger->info($Response->getText());
         echo "\n";
 
-        $nodeName = $XdebugResponse
+        $nodeName = $Response
                         ->getXML()
                         ->getName()
         ;

@@ -6,7 +6,7 @@ use SimpleXMLElement;
 use DOMDocument;
 use PrettyXml\Formatter as XMLFormatter;
 
-class XdebugResponse
+class Response
 {
     /**
      * The original response received.

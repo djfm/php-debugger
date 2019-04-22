@@ -2,9 +2,9 @@
 
 namespace DJFM\Xdebug;
 
-use DJFM\Xdebug\XdebugRequest;
+use DJFM\Xdebug\Request;
 
-class XdebugRequestProvider
+class RequestProvider
 {
     private $commands = [];
     
@@ -15,9 +15,10 @@ class XdebugRequestProvider
     
     private function add($action)
     {
-        $request = new XdebugRequest;
+        $request = new Request;
+        $request->setAction($action);
         $this->commands[$action] = $request;
-        return $request->setAction($action);
+        return $request;
     }
     
     public function makeListOfCommands()

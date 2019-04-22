@@ -4,11 +4,11 @@ namespace DJFM\Xdebug;
 
 use Monolog\Logger;
 
-use DJFM\Xdebug\XdebugRequest;
-use DJFM\Xdebug\XdebugResponseParser;
-use DJFM\Xdebug\XdebugRequestProvider;
-use DJFM\Xdebug\XdebugResponse;
-use DJFM\Xdebug\XdebugReader;
+use DJFM\Xdebug\RequestProvider;
+use DJFM\Xdebug\ResponseParser;
+use DJFM\Xdebug\Response;
+use DJFM\Xdebug\ResponseReceiver;
+use DJFM\Xdebug\RequestExecutor;
 
 class DialogConsole
 {
@@ -20,8 +20,8 @@ class DialogConsole
     ) {
         $this->logger = $logger;
         $this->socket = $socket;
-        $this->requestsProvider = new XdebugRequestProvider;
-        $this->caller = new XdebugCaller(
+        $this->requestsProvider = new RequestProvider;
+        $this->caller = new RequestExecutor(
             $this->socket,
             $this->logger
         );
@@ -49,8 +49,8 @@ class DialogConsole
             $this->handleCommand($userCommand);
         }
         
-        $parser = new XdebugResponseParser();
-        $reader = new XdebugReader($this->socket);
+        $parser = new ResponseParser();
+        $reader = new ResponseReceiver($this->socket);
         $resp = $parser->parse($reader->getXdebugRawResponse());
         echo "Xdebug replied:\n\n";
         echo $resp->getPrettyPrintedXML();

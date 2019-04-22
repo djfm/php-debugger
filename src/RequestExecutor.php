@@ -5,7 +5,9 @@ namespace DJFM\Xdebug;
 use Exception;
 use Monolog\Logger;
 
-class XdebugCaller
+use DJFM\Xdebug\Request;
+
+class RequestExecutor
 {
     public function __construct(
         $socket,
@@ -21,7 +23,7 @@ class XdebugCaller
         return $counterAt += 1;
     }
     
-    public function request(XdebugRequest $request)
+    public function request(Request $request)
     {
         $transactionId = $this->counter();
 

@@ -4,7 +4,7 @@ namespace DJFM\Xdebug;
 
 use Exception;
 
-class XdebugReader
+class ResponseReceiver
 {
     public function __construct($socket)
     {

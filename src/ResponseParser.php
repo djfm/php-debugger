@@ -4,13 +4,13 @@ namespace DJFM\Xdebug;
 
 use SimpleXMLElement;
 
-class XdebugResponseParser
+class ResponseParser
 {
     private $response = '';
     
     public function parse($origStr)
     {
-        $response = new XdebugResponse;
+        $response = new Response;
         $responseArray = explode("\0", $origStr);
         $response
             ->setOriginal($origStr)

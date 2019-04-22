@@ -2,7 +2,7 @@
 
 namespace DJFM\Xdebug;
 
-class XdebugRequest
+class Request
 {
     /**
      * What this does in human

@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 use Noodlehaus\Config;
 use Noodlehaus\Parser\Json;
-use DJFM\Xdebug\Client;
+use DJFM\Xdebug\Debugger;
 
 $conf = new Config([
     __DIR__ . '/config.dist.json',
@@ -14,6 +14,6 @@ $conf = new Config([
 ], new Json);
 
 
-$client = new Client($conf);
+$client = new Debugger($conf);
 
 $client->start();
