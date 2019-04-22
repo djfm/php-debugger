@@ -2,6 +2,8 @@
 
 namespace DJFM\Xdebug;
 
+use Exception;
+
 class XdebugReader
 {
     public function __construct($socket)
@@ -15,9 +17,10 @@ class XdebugReader
         $ssResults = \stream_select($sock, $void, $void, 1);
         if ($ssResults === 0) {
             throw new Exception(
-                'Xdebug did not reply.'
+                'Xdebug did not reply. Probably wrong command.'
             );
         }
+        // TODO: try with stream_get_contents
         $txt = fread($this->socket, 4096);
         return $txt;
     }

@@ -128,6 +128,12 @@ class XdebugResponse
         return $this;
     }
     
+    private function isAttributeBlackListed($attrName)
+    {
+        static $blacklistedAttributes = ['command', 'transaction_id'];
+        return \in_array($attrName, $blacklistedAttributes);
+    }
+    
     /**
      * Pretty print XML.
      * Stolen from: https://solvit.io/8e2132e
@@ -141,6 +147,9 @@ class XdebugResponse
         $nodeName = $elt->getName();
         $result = "{$tagIndent}<$nodeName";
         foreach ($elt->attributes() as $name => $value) {
+            if ($this->isAttributeBlackListed($name)) {
+                continue;
+            }
             $result .= "\n{$attrsIndent}$name=\"$value\"";
         }
         foreach ($elt->children() as $child) {

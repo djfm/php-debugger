@@ -34,6 +34,18 @@ class DialogConsole
                 '[c=yellow]Please enter a command (help will help):[/c]'
             );
             $userCommand = \readline('#> ');
+            
+            if (!$this->requestsProvider->commandExists($userCommand)) {
+                $this->logger->warn(
+                    "[c=red]Unknown command '$userCommand'.[/c]"
+                );
+                $this->logger->warn(
+                    "[c=red]Type 'help' to get the list of "
+                    ."available commands.[/c]"
+                );
+                echo "\n";
+                return;
+            }
             $this->handleCommand($userCommand);
         }
         
@@ -47,25 +59,6 @@ class DialogConsole
     
     public function handleCommand($command)
     {
-        foreach ($this->requestsProvider->getCommands() as $comm) {
-            if ($command !== 'help') {
-                if ($comm->getAction() === $command) {
-                    return $this->caller->request($comm);
-                }
-            }
-        }
-        
-        if ($command !== 'help') {
-            $this->logger->warn(
-                "[c=red]Unknown command '$command'.[/c]"
-            );
-            $this->logger->warn(
-                "[c=red]Type 'help' to get the list of "
-                ."available commands.[/c]"
-            );
-            echo "\n";
-        }
-        
         if ($command === 'help') {
             foreach ($this->requestsProvider->getCommands() as $comm) {
                 $this->logger->info(
@@ -73,6 +66,11 @@ class DialogConsole
                 );
             }
             echo "\n";
+            return;
         }
+        
+        return $this->caller->request(
+            $this->requestsProvider->getCommand($command)
+        );
     }
 }

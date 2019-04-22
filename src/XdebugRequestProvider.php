@@ -16,7 +16,7 @@ class XdebugRequestProvider
     private function add($action)
     {
         $request = new XdebugRequest;
-        $this->commands[] = $request;
+        $this->commands[$action] = $request;
         return $request->setAction($action);
     }
     
@@ -39,5 +39,18 @@ class XdebugRequestProvider
     public function getCommands()
     {
         return $this->commands;
+    }
+    
+    public function getCommand($cmd)
+    {
+        return $this->commands[$cmd];
+    }
+    
+    public function commandExists(string $action)
+    {
+        return array_key_exists(
+            $action,
+            $this->commands
+        );
     }
 }

@@ -118,7 +118,6 @@ class Client
                     'Stream select failed for some reason.'
                 );
             }
-            
             $console->chat($ssResults);
         } while (!$exit);
     }
